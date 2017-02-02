@@ -1,0 +1,82 @@
+﻿@model WeatherDetailViewModels
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.Location)
+    </div>
+    <div class="col-md-4">
+        @Html.TextBoxFor(m => m.Location, new { @readonly = "readonly" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.Time)
+    </div>
+    <div class="col-md-4">
+        @Html.TextBoxFor(m => m.Time, new { @readonly = "readonly" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.Wind)
+    </div>
+    <div class="col-md-4">
+        @Html.TextBoxFor(m => m.Wind, new { @readonly = "readonly" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.Visibility)
+    </div>
+    <div class="col-md-4">
+        @Html.TextBoxFor(m => m.Visibility, new { @readonly = "readonly" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.SkyConditions)
+    </div>
+    <div class="col-md-4">
+        @Html.TextBoxFor(m => m.SkyConditions, new { @readonly = "readonly" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.Temperature)
+    </div>
+    <div class="col-md-4">
+        @Html.TextBoxFor(m => m.Temperature, new { @readonly = "readonly" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.DewPoint)
+    </div>
+    <div class="col-md-4">
+        @Html.TextBoxFor(m => m.DewPoint, new { @readonly = "readonly" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.RelativeHumidity)
+    </div>
+    <div class="col-md-4">
+        @Html.TextBoxFor(m => m.RelativeHumidity, new { @readonly = "readonly" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.Pressure)
+    </div>
+    <div class="col-md-4">
+        @Html.TextBoxFor(m => m.Pressure, new { @readonly = "readonly" })
+    </div>
+</div>

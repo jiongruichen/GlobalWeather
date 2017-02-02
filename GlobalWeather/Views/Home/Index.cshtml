@@ -1,0 +1,95 @@
+﻿@model WeatherViewModels
+@{
+    ViewBag.Title = "Weather Details";
+}
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#CountryName").change(function (e) {
+                var selectedCountry = $("#CountryName").val();
+                if (selectedCountry != "") {
+                    $('#CityName').ajaxLoad({
+                        url: "/Home/GetCityNames",
+                        data: { countryName: selectedCountry }
+                    }).done(function (result, status, xhr) {
+                        clearCity()
+
+                        $.each(result, function () {
+                            $('#CityName').append("<option value='" + this + "'>" + this + "</option>");
+                        });
+
+                        loadWeatherDetails();
+                    });
+                } else {
+                    clearCity()
+                }
+           });
+
+           $("#CityName").change(function (e) {
+               loadWeatherDetails();
+           });
+        });
+
+        function loadWeatherDetails() {
+            $('#weatherDetails').ajaxLoad({
+                url: "/Home/GetWeatherDetails",
+                data: { countryName: $("#CountryName").val(), cityName: $("#CityName").val() }
+            });
+        }
+
+        function clearCity() {
+            $('#CityName').empty();
+            clearWeatherDetails();
+        }
+
+        function clearWeatherDetails() {
+            $("#Location").val('');
+            $("#Time").val('');
+            $("#Wind").val('');
+            $("#Visibility").val('');
+            $("#SkyConditions").val('');
+            $("#Temperature").val('');
+            $("#DewPoint").val('');
+            $("#RelativeHumidity").val('');
+            $("#Pressure").val('');
+        }
+    </script>
+}
+
+<div class="jumbotron">
+    <h1>Weather Details</h1>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.CountryName)
+    </div>
+    <div class="col-md-4">
+        @Html.DropDownListFor(m =>m.CountryName, Model.CountryNames, "Select a country")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+       <br />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        @Html.LabelFor(m => m.CityName)
+    </div>
+    <div class="col-md-4">
+        @Html.DropDownListFor(m => m.CityName, Model.CityNames, "Select a city")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <br />
+    </div>
+</div>
+
+<hr />
+<div id="weatherDetails"></div>

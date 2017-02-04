@@ -13,13 +13,17 @@
                         url: "/Home/GetCityNames",
                         data: { countryName: selectedCountry }
                     }).done(function (result, status, xhr) {
-                        clearCity()
+                        clearCity();
 
-                        $.each(result, function () {
-                            $('#CityName').append("<option value='" + this + "'>" + this + "</option>");
-                        });
+                        if (result.length > 0) {
+                            $.each(result, function () {
+                                $('#CityName').append("<option value='" + this + "'>" + this + "</option>");
+                            });
 
-                        loadWeatherDetails();
+                            loadWeatherDetails();
+                        } else {
+                            displayWarningMessage();
+                        }
                     });
                 } else {
                     clearCity()
@@ -54,12 +58,23 @@
             $("#RelativeHumidity").val('');
             $("#Pressure").val('');
         }
+
+        function displayWarningMessage() {
+            $(document).trigger("add-alerts", [
+                {
+                    "message": "No data found.",
+                    "priority": 'warning'
+                }
+            ]);
+        }
     </script>
 }
 
 <div class="jumbotron">
     <h1>Weather Details</h1>
 </div>
+
+<div data-alerts="alerts" data-titles='{"warning": "<em>Warning!</em>", "error": "<em>Error!</em>"}' data-ids="myid" data-fade="3000"></div>
 
 <div class="row">
     <div class="col-sm-4">

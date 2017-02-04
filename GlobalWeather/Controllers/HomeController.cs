@@ -14,7 +14,6 @@ namespace GlobalWeather.Controllers
 {
     public class HomeController : Controller
     {
-        //private GlobalWeatherService.GlobalWeatherSoapClient _client;
         private GlobalWeatherService.GlobalWeatherSoap _client;
         private IWeatherMapService _weatherMapService;
         private ICountryService _countryService;
@@ -106,7 +105,7 @@ namespace GlobalWeather.Controllers
 
         private double ConvertFromKelvin(double kel)
         {
-            return kel - 273;
+            return Math.Round(kel - 273, 2, MidpointRounding.AwayFromZero);
         }
     }
 }

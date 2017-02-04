@@ -9,9 +9,9 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 * ASP.NET Web API
-* Autofac
+* Ninject
 * jQuery
-* Bootstrap 3
+* Bootstrap
 * Global Weather web service
 * Open Weather Map web API
 * 3rd part libraries
